@@ -79,18 +79,3 @@ def find_address_of_type(host_elem, type_):
     address_elem = host_elem.find('./address[@addrtype="{}"]'.format(type_))
     if address_elem is not None:
         return address_elem.get('addr')
-
-
-if __name__ == '__main__':
-    mac_address = '00:33:66:99:cc:ff'
-    ip_range = '192.168.1.1-255'
-
-    xml = scan_for_hosts(ip_range)
-    ip_address = find_ip_address_for_mac_address(xml, mac_address)
-
-    if ip_address:
-        print('Found IP address {} for MAC address {} in IP address range {}.'
-              .format(ip_address, mac_address, ip_range))
-    else:
-        print('No IP address found for MAC address {} in IP address range {}.'
-              .format(mac_address, ip_range))
